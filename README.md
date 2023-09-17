@@ -39,7 +39,6 @@ While Intune has built-in app uninstall functionality, it's inadequate for manag
 You may wish to remove apps from the list in the script if you require them in your organization. Once apps are removed by this script, it can be a bit cumbersome to get them back. To do this, edit the `$Crap` variable as required.
 
 The following apps are removed by default:
-Here's the sorted list alphabetically:
 
 * 3D Builder
 * Bing apps (News, Weather)
