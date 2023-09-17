@@ -79,7 +79,8 @@ It is unfortunate that such a workaround is necessary, but the OOBE flow as used
 
 Consider the simplicity of this process for end users back in 1995:
 
-![Windows 95](https://github.com/shuuryou/intunetoys/assets/36278767/2068a307-4cad-4b76-ae09-5a753bb277f7)
+![Windows 95 Setup](https://github.com/shuuryou/intunetoys/assets/36278767/f74a0cd6-7699-4595-856d-0abe95a3bfd3)
+
 
 _Sigh_ :disappointed:
 
