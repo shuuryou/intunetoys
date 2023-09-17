@@ -12,7 +12,7 @@ Always test in a controlled environment before deploying in a production scenari
 
 This PowerShell script is designed for use with Microsoft Intune. It's purpose is to automatically uninstall and deprovision bundled shovelware apps (Cortana, Weather, Xbox, etc.) in Windows 11 Enterprise. These apps might be considered unsuitable distractions for users of managed corporate desktop environments.
 
-While Intune has built-in app uninstall functionality, it's inadequate for managing certain modern apps - for instance, Cortana or the Solitaire Collection cannot be removed using that function. This script was created to bridge this gap.
+While Intune has built-in app uninstall functionality, it's inadequate for managing certain modern apps - for instance, Cortana or the Solitaire Collection cannot be removed using that function. In addition, it appears to stop working completely if the Microsoft Store is disabled using policy. This script was created to bridge these gaps.
 
 ### Overview
 
