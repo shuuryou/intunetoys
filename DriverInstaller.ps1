@@ -260,13 +260,9 @@ function Get-Hash
 {
 	param ([parameter(Mandatory = $true)] [ValidateNotNullOrEmpty()]$String)
 
-	# The hash is really, really long. Run it through SHA1 to make it
-	# shorter. The hash isn't a secret or anything like that, so this
-	# isn't a security issue. SHA1 is fine.
-	
 	$SHA1 = new-object -TypeName System.Security.Cryptography.SHA1CryptoServiceProvider
-	$UTF8 = new-object -TypeName System.Text.ASCIIEncoding
-	$Hash = [System.BitConverter]::ToString($SHA1.ComputeHash($UTF8.GetBytes($String))).Replace('-', '').ToLower()
+	$Encoder = new-object -TypeName System.Text.ASCIIEncoding
+	$Hash = [System.BitConverter]::ToString($SHA1.ComputeHash($Encoder.GetBytes($String))).Replace('-', '').ToLower()
 	
 	return $Hash
 }
