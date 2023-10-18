@@ -1,5 +1,5 @@
 ﻿###############################################################################
-# RemoveModernApps.ps1                                                        #
+# SetOSTimeZone.ps1                                                           #
 # PowerShell script for Microsoft Intune to set the time zone of the computer #
 # based on the external IP address. This is required for fully automated      #
 # Windows Autopilot deployment scenarios, because users will not get a chance #
