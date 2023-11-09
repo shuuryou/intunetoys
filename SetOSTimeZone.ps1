@@ -593,7 +593,7 @@ Write-Output("Now attempting to set Windows time zone.")
 
 try
 {
-	Set-TimeZone($MatchedZone)
+	Set-TimeZone -Id $MatchedZone
 }
 catch 
 {
