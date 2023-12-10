@@ -14,12 +14,12 @@
 # organization. Once they're gone, they're gone (unless you like messing
 # with the finer details of modern app packaging in Windows).
 # 549981c3f5f10 is Cortana
-$Crap = "*3dbuilder*", "*sway*", "*communicationsapps*", "*officehub*", `
-		"*bing*", "*zune*", "*gethelp*", "*photos*", "*skype*", "*maps*", `
-		"*solitaire*", "*getstarted*", "*onenote*", "*people*", `
-		"*yourphone*", "*teams*", "*todos*", "*windowsfeedbackhub*", `
-		"*xbox*", "*mixedreality*", "*clipchamp*", "*gamingapp*", `
-		"*549981c3f5f10*"
+$Crap = '*3dbuilder*', '*sway*', '*communicationsapps*', '*officehub*', `
+	'*bing*', '*zune*', '*gethelp*', '*photos*', '*skype*', '*maps*', `
+	'*solitaire*', '*getstarted*', '*onenote*', '*people*', `
+	'*yourphone*', 'MicrosoftTeams', '*todos*', '*windowsfeedbackhub*', `
+	'*xbox*', '*mixedreality*', '*clipchamp*', '*gamingapp*', `
+	'*549981c3f5f10*', '*Outlook*', '*DevHome*'
 
 ###############################################################################
 
@@ -27,11 +27,11 @@ Start-Transcript -Path $env:windir\Temp\Onboarding-RemoveModernApps.log
 
 foreach ($Pattern in $Crap)
 {
-	Write-Output("Processing removal pattern ""{0}...""" -f $Pattern)
+	Write-Output('Processing removal pattern "{0}..."' -f $Pattern)
 	$Packages = Get-AppxPackage -AllUsers $Pattern
 	foreach ($Package in $Packages)
 	{
-		Write-Output("BEGIN REMOVAL: ""{0}"":" -f $Package.Name)
+		Write-Output('BEGIN REMOVAL: "{0}":' -f $Package.Name)
 
 		try
 		{
@@ -39,25 +39,25 @@ foreach ($Pattern in $Crap)
 		}
 		catch
 		{
-			Write-Output("Failed. Ignoring error. Error was: {0}" -f $_)
+			Write-Output('Failed. Ignoring error. Error was: {0}' -f $_)
 		}
 
-		Write-Output("END REMOVAL: ""{0}"":" -f $Package.Name)
+		Write-Output('END REMOVAL: "{0}":' -f $Package.Name)
 	}
 }
 
 foreach ($Pattern in $Crap)
 {
-	Write-Output("Processing deprovisioning pattern ""{0}...""" -f $Pattern)
-	$Package = Get-AppxProvisionedPackage -Online | Where-Object { $_.PackageName -like $Pattern } 
-	
-	if ($Package -eq $Null)
+	Write-Output('Processing deprovisioning pattern "{0}..."' -f $Pattern)
+	$Package = Get-AppxProvisionedPackage -Online | Where-Object { $_.DisplayName -like $Pattern } 
+
+	if ($Null -eq $Package)
 	{
-		Write-Output("No matching package(s) found to to deprovision.")
+		Write-Output('No matching package(s) found to to deprovision.')
 		continue
 	}
-	
-	Write-Output("BEGIN DEPROVISION: ""{0}"":" -f $Package.PackageName)
+
+	Write-Output('BEGIN DEPROVISION: "{0}":' -f $Package.DisplayName)
 
 	try
 	{
@@ -65,13 +65,13 @@ foreach ($Pattern in $Crap)
 	}
 	catch
 	{
-		Write-Output("Failed. Ignoring error. Error was: {0}" -f $_)
+		Write-Output('Failed. Ignoring error. Error was: {0}' -f $_)
 	}
 
-	Write-Output("END DEPROVISION: ""{0}"":" -f $Package.Name)
+	Write-Output('END DEPROVISION: "{0}":' -f $Package.DisplayName)
 }
 
 
-Write-Output "Finished."
+Write-Output 'Finished.'
 
 Exit 0
